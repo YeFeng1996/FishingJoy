@@ -3,23 +3,27 @@
 #include"BackgroundLayer.h"
 #include"FishLayer.h"
 #include"MenuLayer.h"
+//#include"CannonLayer.h"
+//#include"PaneLayer.h"
+
 using namespace cocos2d;
-/*游戏场景类*/
-class GameScene :public cocos2d::CCScene
+
+class GameScene :public CCScene
 {
 public:
 	GameScene(void);
 	CREATE_FUNC(GameScene)
-	~GameScene();
-	/*初始化函数，完成各个层的创建和加载*/
-	virtual bool init(void);
+	virtual~GameScene(void);
+	
+	virtual bool init();
 protected:
-	/*数据成员*/
-	BackgroundLayer::Layer * backgroundLayer;/*背景层*/
-	//CannonLayer *cannonLayer;/*炮台层*/
-	FishLayer::Layer *fishLayer;/*鱼层*/
-	//PaneLayer *paneLayer;/*功能层*/
-	MenuLayer *menuLayer;/*菜单层*/
+	
+	BackgroundLayer *backgroundLayer;
+	//CannonLayer *cannonLayer;
+	FishLayer *fishLayer;
+	//PaneLayer *paneLayer;
+	MenuLayer *menuLayer;
+	void preloadResources(void);
 	
 
 };

@@ -1,11 +1,17 @@
 #pragma once
 #include"cocos2d.h"
-/*”„≤„*/
-class FishLayer :public cocos2d::Layer
+#include "Fish.h"
+using namespace cocos2d;
+class FishLayer :public CCLayer
 {
 public:
-	FishLayer();
-	~FishLayer();
-	bool init();
+	FishLayer(void);
+	CREATE_FUNC(FishLayer);
+	virtual bool init();
+	virtual ~FishLayer(void);
+protected:
+	void addFish(float delta);
+	CCArray* _fishes;
 };
+
 
