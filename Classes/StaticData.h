@@ -4,7 +4,7 @@
 //
 //  @ Project : FishingJoy
 //  @ File Name : StaticData.h
-//  @ Date : 2017/9/29
+//  @ Date : 2017/9/28
 //  @ Author : yefeng
 //
 //
@@ -21,16 +21,17 @@ USING_NS_CC;
 #define STATIC_DATA_FILENAME "static_data.plist"
 #define STATIC_DATA_STRING(key) StaticData::sharedStaticData()->stringValueFromKey(key)
 #define STATIC_DATA_INT(key) StaticData::sharedStaticData()->intValueFromKey(key)
-#define STATIC_DATA_FlOAT(key) StaticData::sharedStaticData()->floatValueFromKey(key)
+#define STATIC_DATA_FLOAT(key) StaticData::sharedStaticData()->floatValueFromKey(key)
 #define STATIC_DATA_BOOL(key) StaticData::sharedStaticData()->booleanFromKey(key)
 #define STATIC_DATA_POINT(key) StaticData::sharedStaticData()->pointFromKey(key)
 #define STATIC_DATA_RECT(key) StaticData::sharedStaticData()->rectFromKey(key)
 #define STATIC_DATA_SIZE(key) StaticData::sharedStaticData()->sizeFromKey(key)
 
 
-class StaticData:
-	public CCObject {
-public:
+class StaticData:public CCObject {
+public:	
+	static StaticData * getInstance();
+	static void destoryIntance();
 	static StaticData* sharedStaticData();
 	static void purge();
 	int intValueFromKey(const string& key);
@@ -40,6 +41,8 @@ public:
 	CCPoint pointFromKey(const string& key);
 	CCRect rectFromKey(const string& key);
 	CCSize sizeFromKey(const string& key);
+
+	
 protected:
 	CCDictionary* _dictionary;
 	string _staticFileName;

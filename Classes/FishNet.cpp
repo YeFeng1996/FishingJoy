@@ -21,7 +21,6 @@ bool FishNet::init()
 	addChild(_fishNetSprite);
 	return true;
 }
-//渔网速度和子弹速度一样
 float FishNet::getSpeed(int type)
 {
 	float speed=640;
@@ -46,14 +45,14 @@ float FishNet::getSpeed(int type)
 		speed = 410;
 		break;
 	case 6:
-		speed = 390;
+		speed = 450;
 		break;
 	default:
 		break;
 	}
 	return speed;
 }
-//渔网出现在哪
+
 void FishNet::showAt(CCPoint pos,int type/*= 0*/)
 {
 	setVisible(true);
@@ -62,13 +61,12 @@ void FishNet::showAt(CCPoint pos,int type/*= 0*/)
 	this->_fishNetSprite->setDisplayFrame(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(fishNetFrameName->getCString()));
 	stopAllActions();
 	CCSequence* sequence = CCSequence::create(CCDelayTime::create(1), CCHide::create(),NULL);
-	//粒子效果
 	CCParticleSystemQuad* particle = (CCParticleSystemQuad*)getUserObject();
 	particle->setPosition(pos);
 	particle->resetSystem();
 	runAction(sequence);
 }
-//渔网碰撞面积
+
 CCRect FishNet::getCollisionArea()
 {
 	CCSize size = _fishNetSprite->getContentSize();

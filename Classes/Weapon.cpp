@@ -75,6 +75,7 @@ CannonType Weapon::getCannonType()
 
 void Weapon::changeCannon(CannonOperate operate)
 {
+	PersonalAudioEngine::getInstance()->playEffect(kEffectSwichCannon);
 	int type = (int) _cannon->getType();
 	type += operate;
 	_cannon->setType((CannonType)type);
@@ -120,7 +121,7 @@ Bullet* Weapon::getBulletToShoot()
 	}
 	return NULL;
 }
-//Åö×²Ãæ»ý
+
 CCRect Weapon::getCollisionArea(Bullet* bullet)
 {
 	FishNet* _fishNets = (FishNet*)bullet->getUserObject();
